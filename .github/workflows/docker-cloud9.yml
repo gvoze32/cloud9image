@@ -1,9 +1,7 @@
 name: Build Docker Images for docker-cloud9
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build-ubuntu20:
