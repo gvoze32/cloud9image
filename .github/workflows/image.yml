@@ -1,4 +1,4 @@
-name: Build Docker Images for docker-baseimage-cloud9
+name: Image
 
 on:
   workflow_dispatch:
@@ -23,9 +23,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./docker-baseimage-cloud9-ubuntu20/Dockerfile
+          file: ./Dockerfile-focal/Dockerfile
           push: true
-          tags: gvoze32/cloud9-base:focal
+          tags: gvoze32/cloud9:focal
 
   build-ubuntu22:
     runs-on: ubuntu-latest
@@ -46,6 +46,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./docker-baseimage-cloud9-ubuntu22/Dockerfile
+          file: ./Dockerfile-jammy/Dockerfile
           push: true
-          tags: gvoze32/gvoze32/cloud9-base:jammy
+          tags: gvoze32/cloud9:jammy
