@@ -50,4 +50,4 @@ jobs:
           context: .
           file: ./docker-baseimage-cloud9-ubuntu22/Dockerfile
           push: true
-          tags: gvoze32/gvoze32/cloud9-base:focal
+          tags: gvoze32/gvoze32/cloud9-base:jammy
