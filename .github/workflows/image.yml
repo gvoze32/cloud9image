@@ -23,7 +23,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./Dockerfile-focal/Dockerfile
+          file: ./Dockerfile-focal
           push: true
           tags: gvoze32/cloud9:focal
 
@@ -46,6 +46,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./Dockerfile-jammy/Dockerfile
+          file: ./Dockerfile-jammy
           push: true
           tags: gvoze32/cloud9:jammy
