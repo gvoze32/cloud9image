@@ -48,4 +48,4 @@ jobs:
           context: .
           file: ./Dockerfile-base-jammy
           push: true
-          tags: gvoze32/gvoze32/cloud9-base:jammy
+          tags: gvoze32/cloud9-base:jammy
