@@ -1,4 +1,4 @@
-name: Image
+name: Image Noble
 
 on:
   workflow_dispatch:
