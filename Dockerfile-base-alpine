@@ -21,9 +21,6 @@ RUN \
     nodejs \
     npm \
     zip && \
-  mkdir -p ./node/bin ./bin ./node_modules && \
-  ln -s "`which node`" ./node/bin/node && \
-  ln -s "`which npm`" ./node/bin/npm && \
   echo "**** Add user permissions ****" && \
   { \
     addgroup -S abc || true; \

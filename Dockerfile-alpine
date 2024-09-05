@@ -21,5 +21,8 @@ apk add --no-cache \
     curl \
     bash \
     docker && \
+mkdir -p ./node/bin ./bin ./node_modules && \
+ln -s "`which node`" ./node/bin/node && \
+ln -s "`which npm`" ./node/bin/npm && \
 echo "**** Cleanup ****" && \
 rm -rf /var/cache/apk/*
