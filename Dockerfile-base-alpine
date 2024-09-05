@@ -13,24 +13,12 @@ COPY --from=builder /buildout/ /
 RUN \
   echo "**** install base packages ****" && \
   apk add --no-cache \
-      bash \
-      tmux \
-      sudo \
-      git \
-      gnupg \
-      make \
-      gcc \
-      g++ \
-      python \
-      sqlite \
-      wget \
-      curl \
-      openssl \
-      ca-certificates \
-      zip \
-      unzip \
-      nodejs \
-      npm &&\
+    curl \
+    git \
+    gnupg \
+    sudo \
+    unzip \
+    zip && \
   mkdir -p ./node/bin ./bin ./node_modules &&\
   ln -sf "`which tmux`" ./bin/tmux &&\
   ln -s "`which node`" ./node/bin/node &&\
