@@ -1,4 +1,4 @@
-name: Image
+name: Image Alpine
 
 on:
   workflow_dispatch:
