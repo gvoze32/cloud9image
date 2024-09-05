@@ -12,8 +12,7 @@ COPY --from=builder /buildout/ /
 
 RUN \
   echo "**** install base packages ****" && \
-  apk -U --no-cache --no-progress upgrade && \
-  apk -U --no-cache --force --no-progress add \
+  apk add --no-cache \
       bash \
       tmux \
       sudo \
