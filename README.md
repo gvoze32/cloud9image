@@ -1,6 +1,6 @@
 # cloud9image
 
-cloud9image aims to provide a cloud-based development environment using Cloud9 IDE. It allows developers to easily set up and configure their development environment without the need for local installations.
+cloud9image is a lightweight, containerized version of the Cloud9 Integrated Development Environment. This image allows developers to quickly set up a consistent coding environment that can be easily deployed and shared. With support for multiple programming languages and essential development tools, it streamlines the development process.
 
 ## Versions
 
