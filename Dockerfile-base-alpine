@@ -12,13 +12,30 @@ COPY --from=builder /buildout/ /
 
 RUN \
   echo "**** install base packages ****" && \
-  apk add --no-cache \
-    curl \
-    git \
-    gnupg \
-    sudo \
-    unzip \
-    zip && \
+  apk -U --no-cache --no-progress upgrade && \
+  apk -U --no-cache --force --no-progress add \
+      bash \
+      tmux \
+      sudo \
+      git \
+      gnupg \
+      make \
+      gcc \
+      g++ \
+      python \
+      sqlite \
+      wget \
+      curl \
+      openssl \
+      ca-certificates \
+      zip \
+      unzip \
+      nodejs \
+      npm &&\
+  mkdir -p ./node/bin ./bin ./node_modules &&\
+  ln -sf "`which tmux`" ./bin/tmux &&\
+  ln -s "`which node`" ./node/bin/node &&\
+  ln -s "`which npm`" ./node/bin/npm &&\
   echo "**** Add user permissions ****" && \
   { \
     addgroup -S abc || true; \
