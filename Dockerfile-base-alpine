@@ -24,7 +24,6 @@ RUN \
     addgroup -S abc || true; \
     adduser -S abc -G abc || true; \
   } && \
-  addgroup -S abc && adduser -S abc -G abc && \
   echo "abc ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
   echo "**** Cleanup ****" && \
   rm -rf /var/cache/apk/* /tmp/*
