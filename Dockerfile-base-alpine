@@ -18,6 +18,8 @@ RUN \
     gnupg \
     sudo \
     unzip \
+    nodejs \
+    npm \
     zip && \
   mkdir -p ./node/bin ./bin ./node_modules && \
   ln -s "`which node`" ./node/bin/node && \
