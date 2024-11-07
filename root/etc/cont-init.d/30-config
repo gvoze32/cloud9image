@@ -1,5 +1,10 @@
 #!/usr/bin/with-contenv bash
 
+# Ensure hostingjaya user exists
+if ! id -u hostingjaya >/dev/null 2>&1; then
+  useradd -m -s /bin/bash hostingjaya
+fi
+
 # check for lock file to only run git operations once
 if [ ! -e /lock.file ]; then
   # give hostingjaya a sudo shell for development

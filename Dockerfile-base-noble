@@ -11,6 +11,7 @@ LABEL maintainer="gvoze32"
 COPY --from=builder /buildout/ /
 
 RUN \
+ useradd -m -s /bin/bash hostingjaya && \
  echo "**** install base packages ****" && \
  apt-get update && \
  apt-get install -y --no-install-recommends \
