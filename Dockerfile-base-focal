@@ -12,7 +12,6 @@ COPY --from=builder /buildout/ /
 
 RUN \
  useradd -m -s /bin/bash hostingjaya && \
- userdel -r abc && \
  echo "**** install base packages ****" && \
  apt-get update && \
  apt-get install -y --no-install-recommends \
