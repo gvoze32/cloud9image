@@ -22,7 +22,7 @@ RUN \
     zip && \
  echo "**** Cleanup and user perms ****" && \
  usermod -aG sudo \
-    abc && \
+    hostingjaya && \
  apt-get autoclean && \
  rm -rf \
         /var/lib/apt/lists/* \

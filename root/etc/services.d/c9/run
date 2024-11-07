@@ -2,5 +2,5 @@
 
 cd /c9sdk
 HOME=/c9bins exec \
-	s6-setuidgid abc \
-	/c9bins/.c9/node/bin/node server.js --listen 0.0.0.0 -p 8000 -w /code -a "${USERNAME}:${PASSWORD}"
+	s6-setuidgid hostingjaya \
+	/c9bins/.c9/node/bin/node server.js --listen 0.0.0.0 --packed -p 8000 -w /workspace -a "${USERNAME}:${PASSWORD}"
