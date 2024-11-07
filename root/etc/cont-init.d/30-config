@@ -9,10 +9,10 @@ if [ ! -e /lock.file ]; then
   sed -e 's/^wheel:\(.*\)/wheel:\1,hostingjaya/g' -i /etc/group
   # create directory for project
   mkdir -p /workspace
-  # make sure URL is set and folder is empty to clone code 
-  if [ ${GITURL+x} ] && [ ! "$(/bin/ls -A /code 2>/dev/null)" ] ; then \
+  # make sure URL is set and folder is empty to clone workspace 
+  if [ ${GITURL+x} ] && [ ! "$(/bin/ls -A /workspace 2>/dev/null)" ] ; then \
     # clone the url the user passed to this directory
-    git clone "${GITURL}" /code
+    git clone "${GITURL}" /workspace
   fi
 else
   # lock exists not importing project this is a restart
@@ -27,5 +27,5 @@ mkdir -p /c9sdk/build/standalone
 echo "[cont-init.d] Setting permissions this may take some time"
 chown -R hostingjaya:hostingjaya \
  /c9sdk/build/standalone \
- /code \
+ /workspace \
  /c9bins
