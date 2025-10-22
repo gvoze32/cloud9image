@@ -29,7 +29,7 @@ RUN \
         /var/lib/apt/lists/* \
         /var/tmp/* \
         /tmp/*
-        
+
 # add local files
 COPY root/ /
 
