@@ -50,24 +50,6 @@ jobs:
             dockerfile: dockerfiles/base/Dockerfile-noble
             tags: |
               gvoze32/cloud9-base:arm64v8-noble
-          - distro: focal
-            arch: arm32v7
-            platform: linux/arm/v7
-            dockerfile: dockerfiles/base/Dockerfile-focal
-            tags: |
-              gvoze32/cloud9-base:arm32v7-focal
-          - distro: jammy
-            arch: arm32v7
-            platform: linux/arm/v7
-            dockerfile: dockerfiles/base/Dockerfile-jammy
-            tags: |
-              gvoze32/cloud9-base:arm32v7-jammy
-          - distro: noble
-            arch: arm32v7
-            platform: linux/arm/v7
-            dockerfile: dockerfiles/base/Dockerfile-noble
-            tags: |
-              gvoze32/cloud9-base:arm32v7-noble
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

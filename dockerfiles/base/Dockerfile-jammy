@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-cloud9:files as builder
+FROM ghcr.io/linuxserver/baseimage-cloud9:files AS builder
 FROM ghcr.io/linuxserver/baseimage-ubuntu:jammy
 
 # set version label
