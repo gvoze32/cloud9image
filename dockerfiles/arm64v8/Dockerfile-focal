@@ -21,10 +21,10 @@ RUN \
  chmod a+r /etc/apt/keyrings/docker.gpg && \
  echo 'deb [arch=arm64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu focal stable' > \
     /etc/apt/sources.list.d/docker-ce.list && \
- apt-get update && \
- apt-get install -y --no-install-recommends \
+ for i in 1 2 3; do apt-get update && break || sleep 5; done && \
+ for i in 1 2 3; do apt-get install -y --no-install-recommends \
     docker-ce \
-    docker-compose-plugin && \
+    docker-compose-plugin && break || sleep 5; done && \
  echo "**** Cleanup and user perms ****" && \
  apt-get autoclean && \
  rm -rf \
