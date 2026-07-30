@@ -1,17 +1,17 @@
 #!/usr/bin/with-contenv bash
 
-# Ensure hostingjaya user exists
-if ! id -u hostingjaya >/dev/null 2>&1; then
-  useradd -m -s /bin/bash hostingjaya
+# Ensure jayanode user exists
+if ! id -u jayanode >/dev/null 2>&1; then
+  useradd -m -s /bin/bash jayanode
 fi
 
 # check for lock file to only run git operations once
 if [ ! -e /lock.file ]; then
-  # give hostingjaya a sudo shell for development
-  chsh hostingjaya -s /bin/bash
+  # give jayanode a sudo shell for development
+  chsh jayanode -s /bin/bash
   sed -e 's/%sudo	ALL=(ALL:ALL) ALL/%sudo ALL=(ALL:ALL) NOPASSWD: ALL/g' \
     -i /etc/sudoers
-  sed -e 's/^wheel:\(.*\)/wheel:\1,hostingjaya/g' -i /etc/group
+  sed -e 's/^wheel:\(.*\)/wheel:\1,jayanode/g' -i /etc/group
   # create directory for project
   mkdir -p /workspace
   # make sure URL is set and folder is empty to clone workspace 
@@ -30,7 +30,7 @@ touch /lock.file
 # permissions
 mkdir -p /c9sdk/build/standalone
 echo "[cont-init.d] Setting permissions this may take some time"
-chown -R hostingjaya:hostingjaya \
+chown -R jayanode:jayanode \
  /c9sdk/build/standalone \
  /workspace \
  /c9bins

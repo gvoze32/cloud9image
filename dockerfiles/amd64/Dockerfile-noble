@@ -12,20 +12,19 @@ ARG VERSION
 LABEL build_version="c9cli version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="gvoze32"
 
-# Docker compose
-COPY --from=compose /usr/local/bin/docker-compose /usr/local/bin/docker-compose
-
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN \
  echo "**** install docker deps ****" && \
- curl -s \
-    https://download.docker.com/linux/ubuntu/gpg | \
-    apt-key add - && \
- echo 'deb [arch=amd64] https://download.docker.com/linux/ubuntu noble stable' > \
+ install -m 0755 -d /etc/apt/keyrings && \
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+    gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
+ chmod a+r /etc/apt/keyrings/docker.gpg && \
+ echo 'deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu noble stable' > \
     /etc/apt/sources.list.d/docker-ce.list && \
  apt-get update && \
  apt-get install -y --no-install-recommends \
-    docker-ce && \
+    docker-ce \
+    docker-compose-plugin && \
  echo "**** Cleanup and user perms ****" && \
  apt-get autoclean && \
  rm -rf \

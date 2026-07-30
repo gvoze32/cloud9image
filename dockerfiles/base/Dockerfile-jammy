@@ -10,8 +10,9 @@ LABEL maintainer="gvoze32"
 # add files from c9base
 COPY --from=builder /buildout/ /
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN \
- useradd -m -s /bin/bash hostingjaya && \
+ useradd -m -s /bin/bash jayanode && \
  echo "**** install base packages ****" && \
  apt-get update && \
  apt-get install -y --no-install-recommends \
@@ -23,7 +24,7 @@ RUN \
     zip && \
  echo "**** Cleanup and user perms ****" && \
  usermod -aG sudo \
-    hostingjaya && \
+    jayanode && \
  apt-get autoclean && \
  rm -rf \
         /var/lib/apt/lists/* \
