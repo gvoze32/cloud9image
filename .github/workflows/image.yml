@@ -57,7 +57,7 @@ jobs:
               gvoze32/cloud9:arm64v8-noble
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
