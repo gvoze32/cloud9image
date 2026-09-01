@@ -1,0 +1,33 @@
+ARG COMPOSE_VERSION="1.29.2"
+
+# docker compose
+FROM ghcr.io/linuxserver/docker-compose:amd64-version-${COMPOSE_VERSION} AS compose
+
+# runtime stage
+FROM gvoze32/cloud9-base:amd64-resolute
+
+# set version label
+ARG BUILD_DATE
+ARG VERSION
+LABEL build_version="c9cli version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="gvoze32"
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+RUN \
+ echo "**** install docker deps ****" && \
+ install -m 0755 -d /etc/apt/keyrings && \
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+    gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
+ chmod a+r /etc/apt/keyrings/docker.gpg && \
+ echo 'deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu resolute stable' > \
+    /etc/apt/sources.list.d/docker-ce.list && \
+ for i in 1 2 3; do apt-get update && break || sleep 5; done && \
+ for i in 1 2 3; do apt-get install -y --no-install-recommends \
+    docker-ce \
+    docker-compose-plugin && break || sleep 5; done && \
+ echo "**** Cleanup and user perms ****" && \
+ apt-get autoclean && \
+ rm -rf \
+    /var/lib/apt/lists/* \
+    /var/tmp/* \
+    /tmp/*

@@ -36,6 +36,13 @@ jobs:
             tags: |
               gvoze32/cloud9:noble
               gvoze32/cloud9:amd64-noble
+          - distro: resolute
+            arch: amd64
+            platform: linux/amd64
+            dockerfile: dockerfiles/amd64/Dockerfile-resolute
+            tags: |
+              gvoze32/cloud9:resolute
+              gvoze32/cloud9:amd64-resolute
               gvoze32/cloud9:latest
           - distro: focal
             arch: arm64v8
@@ -55,6 +62,12 @@ jobs:
             dockerfile: dockerfiles/arm64v8/Dockerfile-noble
             tags: |
               gvoze32/cloud9:arm64v8-noble
+          - distro: resolute
+            arch: arm64v8
+            platform: linux/arm64/v8
+            dockerfile: dockerfiles/arm64v8/Dockerfile-resolute
+            tags: |
+              gvoze32/cloud9:arm64v8-resolute
     steps:
       - name: Checkout code
         uses: actions/checkout@v6

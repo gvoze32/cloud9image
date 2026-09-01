@@ -49,6 +49,7 @@ The Docker image supports the following versions:
 - Ubuntu 20.04 (Focal Fossa)
 - Ubuntu 22.04 (Jammy Jellyfish)
 - Ubuntu 24.04 (Noble Numbat)
+- Ubuntu 26.04 (Resolute Raccoon)
 
 ## DockerHub
 
@@ -60,15 +61,19 @@ docker pull gvoze32/cloud9:latest
 
 **Available Tags:**
 
-| Tag                    | Platforms   |
-| ---------------------- | ----------- |
-| `latest`               | linux/amd64 |
-| `focal`, `amd64-focal` | linux/amd64 |
-| `jammy`, `amd64-jammy` | linux/amd64 |
-| `noble`, `amd64-noble` | linux/amd64 |
-| `arm64v8-focal`        | linux/arm64 |
-| `arm64v8-jammy`        | linux/arm64 |
-| `arm64v8-noble`        | linux/arm64 |
+| Tag                              | Platforms   |
+| -------------------------------- | ----------- |
+| `latest`                         | linux/amd64 |
+| `focal`, `amd64-focal`           | linux/amd64 |
+| `jammy`, `amd64-jammy`           | linux/amd64 |
+| `noble`, `amd64-noble`           | linux/amd64 |
+| `resolute`, `amd64-resolute`     | linux/amd64 |
+| `arm64v8-focal`                  | linux/arm64 |
+| `arm64v8-jammy`                  | linux/arm64 |
+| `arm64v8-noble`                  | linux/arm64 |
+| `arm64v8-resolute`               | linux/arm64 |
+
+The `latest` tag tracks the Ubuntu 26.04 (Resolute Raccoon) amd64 image.
 
 Pull a specific variant with:
 
