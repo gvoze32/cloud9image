@@ -36,6 +36,12 @@ Then open `http://localhost:8000` in your browser.
 | ------ | ------------------- |
 | `8000` | Cloud9 IDE web UI   |
 
+## Cloud9 + Hermes
+
+An optional Compose template runs Cloud9 beside the official Hermes Agent with a shared workspace:
+
+[`templates/cloud9-hermes/compose.yaml`](templates/cloud9-hermes/compose.yaml)
+
 ## Versions
 
 The Docker image supports the following versions:

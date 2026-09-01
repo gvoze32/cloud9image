@@ -15,7 +15,7 @@ if [ ! -e /lock.file ]; then
   # create directory for project
   mkdir -p /workspace
   # make sure URL is set and folder is empty to clone workspace 
-  if [ ${GITURL+x} ] && [ ! "$(/bin/ls -A /workspace 2>/dev/null)" ] ; then \
+  if [ -n "${GITURL:-}" ] && [ ! "$(/bin/ls -A /workspace 2>/dev/null)" ] ; then \
     # clone the url the user passed to this directory
     git clone "${GITURL}" /workspace
   fi

@@ -1,0 +1,50 @@
+services:
+# Usage:
+#   cp .env.example .env
+#   docker compose run --rm --no-deps hermes setup
+#   docker compose run --rm --no-deps hermes config set terminal.cwd /workspace
+#   docker compose up -d
+#
+# Keep bind addresses on loopback unless an authenticated reverse proxy or VPN
+# protects the exposed API/dashboard.
+
+  cloud9:
+    image: "${CLOUD9_IMAGE:-gvoze32/cloud9:latest}"
+    restart: unless-stopped
+    ports:
+      - "${CLOUD9_BIND_ADDRESS:-127.0.0.1}:${CLOUD9_PORT:-8000}:8000"
+    environment:
+      USERNAME: "${CLOUD9_USERNAME:-admin}"
+      PASSWORD: "${CLOUD9_PASSWORD:?Set CLOUD9_PASSWORD in .env}"
+      GITURL: "${CLOUD9_GITURL:-}"
+    volumes:
+      - cloud9_workspace:/workspace
+
+  hermes:
+    image: "${HERMES_IMAGE:-nousresearch/hermes-agent:latest}"
+    restart: unless-stopped
+    depends_on:
+      - cloud9
+    command: ["gateway", "run"]
+    working_dir: /workspace
+    ports:
+      - "${HERMES_BIND_ADDRESS:-127.0.0.1}:${HERMES_API_PORT:-8642}:8642"
+      - "${HERMES_BIND_ADDRESS:-127.0.0.1}:${HERMES_DASHBOARD_PORT:-9119}:9119"
+    environment:
+      HERMES_UID: "${HERMES_UID:-1000}"
+      HERMES_GID: "${HERMES_GID:-1000}"
+      HERMES_DASHBOARD: "${HERMES_DASHBOARD:-0}"
+      HERMES_DASHBOARD_HOST: "${HERMES_DASHBOARD_HOST:-0.0.0.0}"
+      HERMES_DASHBOARD_BASIC_AUTH_USERNAME: "${HERMES_DASHBOARD_BASIC_AUTH_USERNAME:-}"
+      HERMES_DASHBOARD_BASIC_AUTH_PASSWORD: "${HERMES_DASHBOARD_BASIC_AUTH_PASSWORD:-}"
+      HERMES_DASHBOARD_BASIC_AUTH_SECRET: "${HERMES_DASHBOARD_BASIC_AUTH_SECRET:-}"
+      API_SERVER_ENABLED: "${HERMES_API_SERVER_ENABLED:-false}"
+      API_SERVER_HOST: "${HERMES_API_SERVER_HOST:-0.0.0.0}"
+      API_SERVER_KEY: "${HERMES_API_SERVER_KEY:-}"
+    volumes:
+      - hermes_data:/opt/data
+      - cloud9_workspace:/workspace
+
+volumes:
+  cloud9_workspace:
+  hermes_data:
